@@ -8,14 +8,14 @@ import me.dk.exproptimizer.visitors.NormalizingOptimizer
 
 object Main {
 
-    private fun parse(str: String): Expression = IRParser().parse(str)
+    fun parse(str: String): Expression = IRParser().parse(str)
 
-    private fun optimize(expr: Expression): Expression = NormalizingOptimizer().run {
+    fun optimize(expr: Expression): Expression = NormalizingOptimizer().run {
         visit(expr)
         toExpression()
     }
 
-    private fun toString(expr: Expression): String = StringViewVisitor().run {
+    fun show(expr: Expression): String = StringViewVisitor().run {
         visit(expr)
         toString()
     }
@@ -26,7 +26,7 @@ object Main {
         args.joinToString("")
             .let(::parse)
             .let(::optimize)
-            .let(::toString)
+            .let(::show)
             .let(::println)
     }
 }
