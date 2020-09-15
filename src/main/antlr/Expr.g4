@@ -6,9 +6,9 @@ expression:
     | literal
     | '(' expression ')';
 
-identifier: ID_REGEX;
+identifier: id = ID_REGEX;
 
-literal: LIT_REGEX;
+literal: lit = LIT_REGEX;
 
 LIT_REGEX: '0' | [1-9][0-9]*;
 
